@@ -20,7 +20,7 @@ const placeholder = [
 
     },
     {
-        id: 'p1',
+        id: 'p2',
         title: 'Maldivas',
         description: 'Beutiful beaches to enjoy.',
         imageUrl: maldivasUrl,
