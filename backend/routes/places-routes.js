@@ -1,40 +1,17 @@
 const express = require("express");
 
+const placesControllers = require("../controllers/places-controllers");
+
 const router = express.Router();
 
-const placeholder = [
-  {
-    id: "p1",
-    title: "Maldivas",
-    description: "Beutiful beaches to enjoy.",
-    imageUrl: "",
-    address: "Malé, Maldivas",
-    location: {
-      lat: 4.197139,
-      lng: 73.487448,
-    },
-    creator: "u1",
-  },
-];
+router.get("/:pid", placesControllers.getPlaceByID);
 
-router.get("/:pid", (req, res, next) => {
-  const placeId = req.params.pid;
+router.get("/user/:uid", placesControllers.getPlacesByUserID);
 
-  const place = placeholder.find((p) => {
-    return p.id === placeId;
-  });
+router.post('/', placesControllers.createPlace);
 
-  res.json({place});
-});
+router.patch('/:pid', placesControllers.updatePlace);
 
-router.get("/user/:uid", (req, res, next) => {
-    const userId = req.params.uid;
-
-    const place = placeholder.find((p) => {
-        return p.creator === userId;
-    });
-
-    res.json({place});
-});
+router.delete('/:pid', placesControllers.deletePlace);
 
 module.exports = router;
